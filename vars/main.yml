@@ -1,0 +1,14 @@
+---
+remove_files:
+    - '/etc/apt/preferences.d/systemd'
+install_packages:
+  - 'systemd'
+  - 'systemd-sysv'
+enable_services:
+  - 'ssh'               # Is this necessary?
+apt_purge_packages:
+  - 'sysvinit-core'
+  #- 'sysvinit-utils'
+  # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1040458
+  # rsyslog stopped shipping their own init script for System V.
+  - 'orphan-sysvinit-scripts'
